@@ -1,0 +1,12 @@
+uuid: fb8de612-8a68-4bfe-a3a3-794aa7d415a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: qZAuDInMPPu_iI6yQuyFijwLJHsiEs-1dSlF5UBMEuI
+id: media.inline
+label: Inline
+targetEntityType: media
+cache: true

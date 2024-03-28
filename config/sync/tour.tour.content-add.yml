@@ -1,0 +1,87 @@
+uuid: 6293081a-635c-4c37-8041-7697b858c8cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - thunder_demo
+_core:
+  default_config_hash: PwPAZ90NsaHA2VK10HkiuRHWquZAmEQoT4Tn0265vco
+id: content-add
+label: 'Add new content'
+module: thunder_demo
+routes:
+  -
+    route_name: node.add
+    route_params:
+      node_type: article
+tips:
+  article:
+    id: article
+    plugin: text
+    label: 'Article creation page'
+    weight: 1
+    body: '<p>On this step we''ll explain you the different parts of an article.</p><p>Let''s start!</p>'
+  article-channel:
+    id: article-channel
+    plugin: text
+    label: 'Channel selection'
+    weight: 2
+    selector: '#edit-field-channel'
+    body: '<p>Channels reflect the site structure. Administrators can easily add, remove, modify and organize them using a simple UI.</p><p>Choose the one in which your article will be published.</p>'
+  article-title:
+    id: article-title
+    plugin: text
+    label: Title
+    weight: 3
+    selector: '#edit-title-wrapper'
+    body: '<p>Enter the title of your article, which is used as main heading of your article.</p>'
+  article-seo-title:
+    id: article-seo-title
+    plugin: text
+    label: Seo-Title
+    weight: 4
+    selector: '#edit-field-seo-title-wrapper'
+    body: '<p>Enter the same or a different title, which is optimized for search engines.</p><p>It will be used to generate the url and as browser title.</p>'
+  article-teaser-media:
+    id: article-teaser-media
+    plugin: text
+    label: 'Teaser media'
+    weight: 5
+    selector: '#edit-field-teaser-media'
+    body: '<p>Enter the information that will be used for teasers (on the front page for example). First upload or select a teaser image by clicking on the "Select entities" button.</p><p>Take your time! I am not going anywhere. ;)</p>'
+  article-teaser-text:
+    id: article-teaser-text
+    plugin: text
+    label: 'Teaser text'
+    weight: 6
+    selector: '#edit-field-teaser-text-wrapper'
+    body: '<p>Type the text which will appear at the front page and which will be used for Facebook and Google-Snippets, too.</p>'
+  article-paragraphs:
+    id: article-paragraphs
+    plugin: text
+    label: Paragraphs
+    weight: 7
+    selector: '.paragraphs-container .fieldset-legend'
+    body: '<p>The paragraphs section represents the main article content. Here you can add your text and various types of media. It is easier to explain this part on an existing article, which we''ll do on our next stop.</p><p>But let me show you few more neat things first.</p>'
+  article-advanced:
+    id: article-advanced
+    plugin: text
+    label: Advanced
+    weight: 8
+    position: left
+    selector: '#edit-advanced'
+    body: '<p>They let you configure advanced settings related to the article. You will use this part when dealing with SEO, article promotion, scheduling, etc.</p><p>Click on the section titles to expand them and see what they offer.</p>'
+  article-actions:
+    id: article-actions
+    plugin: text
+    label: 'Main actions'
+    weight: 9
+    position: top-start
+    selector: '#edit-actions'
+    body: '<p>You can preview, save, publish and unpublish the article here.</p><p>Try clicking the down arrow in the "Save and continue" button to reveal the hidden options.</p>'
+  article-last:
+    id: article-last
+    plugin: text
+    label: 'What is next?'
+    weight: 10
+    body: '<p>You have just learned how to create an article. What do you want to do next?</p><p><em>Ah, right!</em> I promised you that <a href="/drupal/newsmedia/docroot/core/install.php/node/5/edit?tour=1">I''ll teach you more about paragraphs</a>.'

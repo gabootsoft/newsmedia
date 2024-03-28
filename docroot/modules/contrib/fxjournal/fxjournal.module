@@ -1,0 +1,364 @@
+<?php
+
+/**
+ * @file
+ * Provides a forex journal record entity type.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Implements hook_theme().
+ */
+function fxjournal_theme() {
+  return [
+    'fxjournal_record' => [
+      'render element' => 'elements',
+    ],
+
+    'fxjournal_account' => [
+      'render element' => 'elements',
+    ],
+
+    'fxjournal_symbol' => [
+      'render element' => 'elements',
+    ],
+
+    'fxjournal_event' => [
+      'render element' => 'elements',
+    ],
+
+  ];
+}
+
+/**
+ * Prepares variables for forex journal record templates.
+ *
+ * Default template: fxjournal-record.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array with the forex journal record
+ *     information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_fxjournal_record(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  $variables['#attached']['library'][] = 'fxjournal/fxjournal';
+}
+
+/**
+ * Prepares variables for forex journal account templates.
+ *
+ * Default template: fxjournal-account.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the forex journal
+ *     account information and an yields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_fxjournal_account(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  $variables['#attached']['library'][] = 'fxjournal/fxjournal';
+}
+
+/**
+ * Prepares variables for forex journal symbol templates.
+ *
+ * Default template: fxjournal-symbol.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the forex journal
+ *     symbol information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_fxjournal_symbol(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  $variables['#attached']['library'][] = 'fxjournal/fxjournal';
+}
+
+/**
+ * Prepares variables for forex journal event templates.
+ *
+ * Default template: fxjournal-event.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the forex journal
+ *     event information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_fxjournal_event(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  $variables['#attached']['library'][] = 'fxjournal/fxjournal';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function fxjournal_form_fxjournal_record_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $user = \Drupal::currentUser();
+
+  /** @var \Drupal\fxjournal\Processor $processor */
+  $processor = \Drupal::service('fxjournal.processor');
+
+  $trade_accounts = $processor->getAccounts($user->id());
+  if (empty($trade_accounts)) {
+    $url = Url::fromRoute('entity.fxjournal_account.add_form');
+    $link = Link::fromTextAndUrl(t('here'), $url)->toString();
+    // Notify the user that trade accounts must be defined.
+    $form['trade_account']['widget']['#description'] = t(
+      'Please create trade accounts @link .',
+      [
+        '@link' => $link,
+      ]
+    );
+  }
+  // Set the trade account select options to belong to the current user only.
+  $form['trade_account']['widget']['#options'] = $trade_accounts;
+
+  $symbols = $processor->getSymbols($user->id());
+  if (empty($symbols)) {
+    $url = Url::fromRoute('entity.fxjournal_symbol.add_form');
+    $link = Link::fromTextAndUrl(t('here'), $url)->toString();
+    // Notify the user that symbols must be defined.
+    $form['symbol']['widget']['#description'] = t(
+      'Please create symbols @link .',
+      [
+        '@link' => $link,
+      ]
+    );
+  }
+  // Set the symbol select options to belong to the current user only.
+  $form['symbol']['widget']['#options'] = $symbols;
+
+  $events = $processor->getEvents($user->id());
+  if (empty($events)) {
+    $url = Url::fromRoute('entity.fxjournal_event.add_form');
+    $link = Link::fromTextAndUrl(t('here'), $url)->toString();
+    // Notify the user that events must be defined.
+    $form['events']['widget']['#description'] = t(
+      'Please create events @link .',
+      [
+        '@link' => $link,
+      ]
+    );
+  }
+  // Set the event select options to belong to the current user only.
+  $form['events']['widget']['#options'] = $events;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function fxjournal_form_fxjournal_record_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var \Drupal\fxjournal\Entity\FxjournalRecordInterface  $record */
+  $record = $form_state->getFormObject()->getEntity();
+  $author_id = $record->getOwnerId();
+
+  /** @var \Drupal\fxjournal\Processor $processor */
+  $processor = \Drupal::service('fxjournal.processor');
+
+  // Set the trade account select options to belong to the record author only.
+  $form['trade_account']['widget']['#options'] = $processor->getAccounts($author_id);
+
+  // Set the symbol select options to belong to the record author only.
+  $form['symbol']['widget']['#options'] = $processor->getSymbols($author_id);
+
+  // Set the event select options to belong to the record author only.
+  $form['events']['widget']['#options'] = $processor->getEvents($author_id);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function fxjournal_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (strpos($form_id, 'fxjournal_') !== 0) {
+    return;
+  }
+
+  $forms = [
+    'fxjournal_record_add_form',
+    'fxjournal_record_edit_form',
+    'fxjournal_record_delete_form',
+  ];
+
+  $user = \Drupal::currentUser();
+
+  $form['actions']['submit']['#submit'][] = 'fxjournal_record_form_submit_handler';
+
+  if ($form_id === 'fxjournal_record_add_form' || $form_id === 'fxjournal_record_edit_form') {
+    if ($user->hasPermission('administer forex journal record') === FALSE) {
+      // Hide the "user" and "created" fields for non-admin users.
+      $form['uid']['#access'] = FALSE;
+      $form['created']['#access'] = FALSE;
+    }
+  }
+
+  $forms = [
+    'fxjournal_account_add_form',
+    'fxjournal_account_edit_form',
+    'fxjournal_account_delete_form',
+  ];
+
+  if (in_array($form_id, $forms)) {
+    if ($user->hasPermission('administer forex journal account') == FALSE) {
+      // Hide the "user" and "created" fields for non-admin users.
+      $form['uid']['#access'] = FALSE;
+      $form['created']['#access'] = FALSE;
+      $form['actions']['submit']['#submit'][] = 'fxjournal_account_form_submit_handler';
+    }
+
+    return;
+  }
+
+  $forms = [
+    'fxjournal_symbol_add_form',
+    'fxjournal_symbol_edit_form',
+    'fxjournal_symbol_delete_form',
+  ];
+
+  if (in_array($form_id, $forms)) {
+    if ($user->hasPermission('administer forex journal symbol') == FALSE) {
+      // Hide the "user" and "created" fields for non-admin users.
+      $form['uid']['#access'] = FALSE;
+      $form['created']['#access'] = FALSE;
+      $form['actions']['submit']['#submit'][] = 'fxjournal_symbol_form_submit_handler';
+    }
+
+    return;
+  }
+
+  $forms = [
+    'fxjournal_event_add_form',
+    'fxjournal_event_edit_form',
+    'fxjournal_event_delete_form',
+  ];
+
+  if (in_array($form_id, $forms)) {
+    if ($user->hasPermission('administer forex journal event') == FALSE) {
+      // Hide the "user" and "created" fields for non-admin users.
+      $form['uid']['#access'] = FALSE;
+      $form['created']['#access'] = FALSE;
+      $form['actions']['submit']['#submit'][] = 'fxjournal_event_form_submit_handler';
+    }
+
+    return;
+  }
+}
+
+/**
+ * Form submit handler.
+ *
+ * @param mixed $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state instance.
+ */
+function fxjournal_record_form_submit_handler(&$form, FormStateInterface $form_state) {
+  $user = \Drupal::currentUser();
+
+  if ($user->hasPermission('administer forex journal record') == FALSE) {
+    $form_state->setRedirect('fxjournal.user.dashboard', ['user' => $user->id()]);
+  }
+}
+
+/**
+ * Form submit handler.
+ *
+ * @param mixed $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state instance.
+ */
+function fxjournal_account_form_submit_handler(&$form, FormStateInterface $form_state) {
+  $user = \Drupal::currentUser();
+
+  if ($user->hasPermission('administer forex journal account') == FALSE) {
+    $form_state->setRedirect('fxjournal.user.dashboard', ['user' => $user->id()]);
+  }
+}
+
+/**
+ * Form submit handler.
+ *
+ * @param mixed $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state instance.
+ */
+function fxjournal_symbol_form_submit_handler(&$form, FormStateInterface $form_state) {
+  $user = \Drupal::currentUser();
+
+  if ($user->hasPermission('administer forex journal symbol') == FALSE) {
+    $form_state->setRedirect('fxjournal.user.dashboard', ['user' => $user->id()]);
+  }
+}
+
+/**
+ * Form submit handler.
+ *
+ * @param mixed $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state instance.
+ */
+function fxjournal_event_form_submit_handler(&$form, FormStateInterface $form_state) {
+  $user = \Drupal::currentUser();
+
+  if ($user->hasPermission('administer forex journal event') == FALSE) {
+    $form_state->setRedirect('fxjournal.user.dashboard', ['user' => $user->id()]);
+  }
+}
+
+/**
+ * Gets the allowed values for the record entity references.
+ *
+ * @param \Drupal\field\Entity\FieldStorageConfig $definition
+ *   The field definition object.
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity instance.
+ *
+ * @return array
+ *   The allowed values.
+ */
+function fxjournal_allowed_values_callback(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL): array {
+  /** @var \Drupal\Core\Session\AccountProxyInterface $user */
+  $user = \Drupal::currentUser();
+
+  /** @var \Drupal\fxjournal\Processor $processor */
+  $processor = \Drupal::service('fxjournal.processor');
+
+  switch ($entity->bundle()) {
+    case 'fxjournal_event':
+      return $processor->getEvents($user->id());
+
+    case 'fxjournal_account':
+      return $processor->getAccounts($user->id());
+
+    case 'fxjournal_symbol':
+      return $processor->getSymbols($user->id());
+
+  }
+
+  return [];
+}

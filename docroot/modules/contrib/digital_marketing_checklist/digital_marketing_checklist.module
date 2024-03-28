@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * @file
+ * Contains production_checklist.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\digital_marketing_checklist\DigitalMarketingChecklistInterface;
+
+/**
+ * Implements hook_help().
+ */
+function digital_marketing_checklist_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.digital_marketing_checklist':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A checklist of Digital Marketing related tasks.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function digital_marketing_checklist_theme() {
+  return [
+    'project_status_link' => [
+      // @todo preprocess hook
+      'variables' => [
+        'link' => NULL,
+        'status' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_checklistapi_checklist_info().
+ */
+function digital_marketing_checklist_checklistapi_checklist_info() {
+  $definitions = [];
+  // Set checklist basic definition.
+  $definitions[DigitalMarketingChecklistInterface::CHECKLIST_ID] = [
+    '#title' => t('Digital Marketing Checklist'),
+    '#path' => 'admin/config/digital_marketing_checklist/checklist',
+    '#callback' => 'digital_marketing_checklist_checklistapi_checklist_items',
+    '#description' => t('Digital Marketing Checklist.'),
+  ];
+  return $definitions;
+}
+
+/**
+ * Implements callback_checklistapi_checklist_items().
+ */
+function digital_marketing_checklist_checklistapi_checklist_items() {
+  // @todo add basic / extended checklist filter
+  // @todo add launch / maintenance checklist filter
+  // @todo notification once a checked item has been invalidated by configuration
+  // @todo convert formUserInput into fromRoute
+
+  /** @var \Drupal\digital_marketing_checklist\DigitalMarketingChecklistInterface $productionChecklist */
+  $productionChecklist = \Drupal::service('digital_marketing_checklist');
+  return $productionChecklist->getAvailableSectionsItems();
+}
+
+/**
+ * Implements hook_checklistapi_checklist_info_alter().
+ */
+function digital_marketing_checklist_checklistapi_checklist_info_alter(array &$definitions) {
+  /** @var \Drupal\Core\Render\Renderer $renderer */
+  $renderer = \Drupal::service('renderer');
+
+  // Set configuration Url in info_alter, once the route is available.
+  $configurationUrl = Url::fromRoute('digital_marketing_checklist.sections');
+  $configurationLink = Link::fromTextAndUrl(t('Configure available sections'), $configurationUrl);
+  $configurationLink = $configurationLink->toRenderable();
+  $configurationLink = $renderer->renderRoot($configurationLink);
+  $definitions[DigitalMarketingChecklistInterface::CHECKLIST_ID]['#help'] = '<p>'
+    . t('A checklist for site launch and maintenance based on the active configuration. @config_link.',
+    ['@config_link' => $configurationLink]) . '</p>';
+
+  /** @var \Drupal\digital_marketing_checklist\DigitalMarketingChecklistInterface $productionChecklist */
+  $productionChecklist = \Drupal::service('digital_marketing_checklist');
+  /** @var \Drupal\Core\Config\ImmutableConfig $config */
+  $config = \Drupal::config('digital_marketing_checklist.settings');
+
+  // Remove sections that are unset from the configuration.
+  $configuredSections = $config->get('sections');
+  foreach ($definitions[DigitalMarketingChecklistInterface::CHECKLIST_ID] as $sectionKey => $sectionTitle) {
+    if (!array_key_exists($sectionKey, $productionChecklist->getAvailableSections())
+      || (isset($configuredSections[$sectionKey]) &&  $configuredSections[$sectionKey] === 0)) {
+      if (strpos($sectionKey, '#') === FALSE) {
+        unset($definitions[DigitalMarketingChecklistInterface::CHECKLIST_ID][$sectionKey]);
+      }
+    }
+  }
+}

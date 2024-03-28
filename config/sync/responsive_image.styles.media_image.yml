@@ -1,0 +1,32 @@
+uuid: d1de0444-56a2-4eca-9ce5-a227e2e432ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.media_image
+    - image.style.media_image_mobile
+    - image.style.media_image_tablet
+  theme:
+    - olivero
+_core:
+  default_config_hash: cv8KMEGM468qm3xz6jQzKvRdhoGrKwGmPX_CdPgmuO8
+id: media_image
+label: 'Media Image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: media_image
+    breakpoint_id: olivero.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: media_image_tablet
+    breakpoint_id: olivero.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: media_image_mobile
+    breakpoint_id: olivero.sm
+    multiplier: 1x
+breakpoint_group: olivero
+fallback_image_style: media_image

@@ -1,0 +1,26 @@
+uuid: 3e74b23c-0a33-47d2-8495-b287a6b5eeb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_paragraphs
+    - node.type.page
+  module:
+    - user
+_core:
+  default_config_hash: MEhobcMDue_NV0EyIAsKZWK3_60pws3tXRiLlUpbEbI
+id: node.page.teaser
+targetEntityType: node
+bundle: page
+mode: teaser
+content:
+  links:
+    weight: 101
+    region: content
+hidden:
+  field_meta_tags: true
+  field_paragraphs: true
+  langcode: true
+  shariff_field: true

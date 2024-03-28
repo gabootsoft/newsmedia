@@ -1,0 +1,43 @@
+entity.fxjournal_record.settings:
+  title: Forex Journal Record
+  description: Configure a Forex Journal Record entity type
+  route_name:  entity.fxjournal_record.settings
+  parent: system.admin_structure
+entity.fxjournal_record.collection:
+  title: Forex Journal Records
+  description: List of forex journal records
+  route_name: entity.fxjournal_record.collection
+  parent: system.admin_content
+
+entity.fxjournal_account.settings:
+  title: Forex Journal Account
+  description: Configure the Forex Journal Account entity type
+  route_name:  entity.fxjournal_account.settings
+  parent: system.admin_structure
+entity.fxjournal_account.collection:
+  title: Forex Journal Accounts
+  description: List of forex journal accounts
+  route_name: entity.fxjournal_account.collection
+  parent: system.admin_content
+
+entity.fxjournal_symbol.settings:
+  title: Forex Journal Symbol
+  description: Configure a Forex Journal Symbol entity type
+  route_name:  entity.fxjournal_symbol.settings
+  parent: system.admin_structure
+entity.fxjournal_symbol.collection:
+  title: Forex Journal Symbols
+  description: List of forex journal symbols
+  route_name: entity.fxjournal_symbol.collection
+  parent: system.admin_content
+
+entity.fxjournal_event.settings:
+  title: Forex Journal Event
+  description: Configure a Forex Journal Event entity type
+  route_name:  entity.fxjournal_event.settings
+  parent: system.admin_structure
+entity.fxjournal_event.collection:
+  title: Forex Journal Events
+  description: List of forex journal events
+  route_name: entity.fxjournal_event.collection
+  parent: system.admin_content

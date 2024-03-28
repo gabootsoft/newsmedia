@@ -1,0 +1,55 @@
+administer forex journal record:
+  title: 'Administer forex journal record settings'
+  restrict access: true
+access forex journal record overview:
+  title: 'Access forex journal record overview page'
+delete forex journal record:
+  title: Delete forex journal record
+create forex journal record:
+  title: Create forex journal record
+view forex journal record:
+  title: View forex journal record
+edit forex journal record:
+  title: Edit forex journal record
+
+administer forex journal account:
+  title: 'Administer forex journal account settings'
+  restrict access: true
+access forex journal account overview:
+  title: 'Access forex journal account overview page'
+delete forex journal account:
+  title: Delete forex journal account
+create forex journal account:
+  title: Create forex journal account
+view forex journal account:
+  title: View forex journal account
+edit forex journal account:
+  title: Edit forex journal account
+
+administer forex journal symbol:
+  title: 'Administer forex journal symbol settings'
+  restrict access: true
+access forex journal symbol overview:
+  title: 'Access forex journal symbol overview page'
+delete forex journal symbol:
+  title: Delete forex journal symbol
+create forex journal symbol:
+  title: Create forex journal symbol
+view forex journal symbol:
+  title: View forex journal symbol
+edit forex journal symbol:
+  title: Edit forex journal symbol
+
+administer forex journal event:
+  title: 'Administer forex journal event settings'
+  restrict access: true
+access forex journal event overview:
+  title: 'Access forex journal event overview page'
+delete forex journal event:
+  title: Delete forex journal event
+create forex journal event:
+  title: Create forex journal event
+view forex journal event:
+  title: View forex journal event
+edit forex journal event:
+  title: Edit forex journal event

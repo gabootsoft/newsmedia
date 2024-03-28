@@ -1,0 +1,4 @@
+services:
+  digital_marketing_checklist:
+    class: Drupal\digital_marketing_checklist\DigitalMarketingChecklist
+    arguments: ['@entity_type.manager', '@module_handler', '@renderer', '@config.factory', '@messenger']

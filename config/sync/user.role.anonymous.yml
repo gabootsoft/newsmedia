@@ -1,0 +1,26 @@
+uuid: 9f9062ef-7361-4dbf-839a-01bfa69e44a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - access_unpublished
+    - filter
+    - media
+    - system
+    - thunder_taxonomy
+_core:
+  default_config_hash: 3VzReMhTytcoLvknE6EAlGs7m9yFVC2jiLkeuV21f_4
+id: anonymous
+label: 'Anonymous user'
+weight: -10
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access user profiles'
+  - 'access_unpublished node article'
+  - 'use text format restricted_html'
+  - 'view media'
+  - 'view published terms in channel'
+  - 'view published terms in tags'

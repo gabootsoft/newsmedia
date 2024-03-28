@@ -1,0 +1,14 @@
+name: Digital Marketing Checklist
+type: module
+description: A checklist of Digital Marketing related tasks.
+configure: checklistapi.checklists.digital_marketing_checklist
+package: 'Digital Marketing'
+dependencies:
+  - drupal:checklistapi
+core: 8.x
+core_version_requirement: ^8 || ^9
+
+# Information added by Drupal.org packaging script on 2022-08-27
+version: '1.0.0-beta2'
+project: 'digital_marketing_checklist'
+datestamp: 1661617260

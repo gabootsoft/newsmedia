@@ -1,0 +1,83 @@
+{
+    "name": "gabootsoft/newsmedia",
+    "description": "Newsmedia projects",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "anonymoussc",
+            "email": "50c5ac69@opayq.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.2",
+        "drupal/burndown": "^1.0",
+        "drupal/content_planner": "^1.0@beta",
+        "drupal/core-composer-scaffold": "^9.0",
+        "drupal/digital_marketing_checklist": "^1.0@beta",
+        "drupal/fxjournal": "^2.0",
+        "drupal/lang_dropdown": "^2.0",
+        "drupal/recipe": "^2.1",
+        "drupal/simplenews": "^3.0@beta",
+        "drupal/social_media_links": "^2.8",
+        "drupal/swiftmailer": "2.2",
+        "drush/drush": "^10.3",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "thunder/thunder-distribution": "~6.0@STABLE",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "files": ["load.environment.php"]
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "installer-types": ["bower-asset", "npm-asset"],
+        "installer-paths": {
+            "docroot/core": ["type:drupal-core"],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
+            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "enable-patching": true,
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "docroot/"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 2000,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "oomphinc/composer-installers-extender": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

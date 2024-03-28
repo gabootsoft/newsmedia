@@ -1,0 +1,5 @@
+# Custom module library for general purposes.
+fxjournal:
+  css:
+    component:
+      css/fxjournal.css: {}

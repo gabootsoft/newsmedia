@@ -1,0 +1,38 @@
+uuid: 3aaf2350-2617-470e-89d6-200e71a250bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.paragraph_preview
+    - field.field.media.pinterest.field_url
+    - image.style.paragraph_preview_thumbnail
+    - media.type.pinterest
+  module:
+    - empty_fields
+    - image
+_core:
+  default_config_hash: VlxYapJ3cG0_0TKDsT_wah9Z5ksUtwh1h78kqFT7XEE
+id: media.pinterest.paragraph_preview
+targetEntityType: media
+bundle: pinterest
+mode: paragraph_preview
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: paragraph_preview_thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      empty_fields:
+        handler: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_url: true
+  langcode: true
+  name: true
+  uid: true

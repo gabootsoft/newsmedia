@@ -1,0 +1,23 @@
+uuid: b081ab2f-c1e8-47ab-a7b6-6019c2c7b1ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.quote
+  module:
+    - text
+_core:
+  default_config_hash: J7CY5ltxwvx0r0PvS9LPMYwwlF6Y3eGh_o_ZJrxEa8I
+id: paragraph.quote.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: quote
+label: Quote
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

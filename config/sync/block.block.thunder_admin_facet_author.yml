@@ -1,0 +1,25 @@
+uuid: 0d814bc7-9c7f-4abb-908a-ea99e3edab47
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.author
+  module:
+    - facets
+  theme:
+    - thunder_admin
+_core:
+  default_config_hash: jd8ANdSEDsL47-m5QyCT19fUYmXZw_yAC5yH9lpBdYY
+id: thunder_admin_facet_author
+theme: thunder_admin
+region: content
+weight: -5
+provider: null
+plugin: 'facet_block:author'
+settings:
+  id: 'facet_block:author'
+  label: Author
+  label_display: '0'
+  provider: facets
+  block_id: thunder_admin_facet_author
+visibility: {  }

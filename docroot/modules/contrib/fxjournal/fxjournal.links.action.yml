@@ -1,0 +1,23 @@
+fxjournal_record.add_form:
+  route_name: entity.fxjournal_record.add_form
+  title: 'Add forex journal record'
+  appears_on:
+    - fxjournal.user.dashboard
+
+fxjournal_event.add_form:
+  route_name: entity.fxjournal_event.add_form
+  title: 'Add forex journal event'
+  appears_on:
+    - fxjournal.user.dashboard
+
+fxjournal_account.add_form:
+  route_name: entity.fxjournal_account.add_form
+  title: 'Add forex journal account'
+  appears_on:
+    - fxjournal.user.dashboard
+
+fxjournal_symbol.add_form:
+  route_name: entity.fxjournal_symbol.add_form
+  title: 'Add forex journal symbol'
+  appears_on:
+    - fxjournal.user.dashboard

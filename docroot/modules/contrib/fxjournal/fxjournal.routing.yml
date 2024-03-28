@@ -1,0 +1,40 @@
+fxjournal.user.dashboard:
+  path: '/user/{user}/fxjournal/dashboard'
+  defaults:
+    _title: 'Forex Journal Dashboard'
+    _controller: '\Drupal\fxjournal\Controller\FxjournalDashboardController::dashboard'
+  requirements:
+    _custom_access: '\Drupal\fxjournal\Controller\FxjournalDashboardController::access'
+    user: \d+
+
+entity.fxjournal_record.settings:
+  path: 'admin/structure/fxjournal-record'
+  defaults:
+    _form: '\Drupal\fxjournal\Form\FxjournalRecordSettingsForm'
+    _title: 'Forex Journal Record'
+  requirements:
+    _permission: 'administer forex journal record'
+
+entity.fxjournal_account.settings:
+  path: 'admin/structure/fxjournal-account'
+  defaults:
+    _form: '\Drupal\fxjournal\Form\FxjournalAccountSettingsForm'
+    _title: 'Forex Journal Account'
+  requirements:
+    _permission: 'administer forex journal account'
+
+entity.fxjournal_symbol.settings:
+  path: 'admin/structure/fxjournal-symbol'
+  defaults:
+    _form: '\Drupal\fxjournal\Form\FxjournalSymbolSettingsForm'
+    _title: 'Forex Journal Symbol'
+  requirements:
+    _permission: 'administer forex journal symbol'
+
+entity.fxjournal_event.settings:
+  path: 'admin/structure/fxjournal-event'
+  defaults:
+    _form: '\Drupal\fxjournal\Form\FxjournalEventSettingsForm'
+    _title: 'Forex Journal Event'
+  requirements:
+    _permission: 'administer forex journal event'

@@ -1,0 +1,23 @@
+uuid: d3e2c203-2e29-43c2-85c0-e6d70f9eb155
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_expires
+    - media.type.image
+  module:
+    - datetime
+_core:
+  default_config_hash: uqAqldhcknXD0RJ-Lf38U9LEKb5BXEvGMLp7z2GJWRc
+id: media.image.field_expires
+field_name: field_expires
+entity_type: media
+bundle: image
+label: Expires
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

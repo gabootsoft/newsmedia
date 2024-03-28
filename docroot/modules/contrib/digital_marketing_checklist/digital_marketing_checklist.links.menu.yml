@@ -1,0 +1,17 @@
+digital_marketing_checklist.checklist:
+  title: 'Digital Marketing Checklist'
+  parent: system.admin_config_development
+  route_name: checklistapi.checklists.digital_marketing_checklist
+  description: 'Digital Marketing Checklist'
+digital_marketing_checklist.sections:
+  title: 'Digital Marketing Checklist sections'
+  route_name: digital_marketing_checklist.sections
+  description: 'Sections to enable.'
+  parent: digital_marketing_checklist.checklist
+  weight: 99
+digital_marketing_checklist.settings:
+  title: 'Digital Marketing Checklist settings'
+  route_name: digital_marketing_checklist.settings
+  description: 'Notification preferences.'
+  parent: digital_marketing_checklist.checklist
+  weight: 99

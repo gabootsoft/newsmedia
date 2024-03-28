@@ -1,0 +1,25 @@
+uuid: 94d49bad-30fa-43bf-81b0-82661d4af03f
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.status
+  module:
+    - facets
+  theme:
+    - seven
+_core:
+  default_config_hash: j-sU_SMnLBpeQdoCttgni2trBZEFaZ1ewVAbkS_1bQE
+id: seven_facet_status
+theme: seven
+region: content
+weight: -3
+provider: null
+plugin: 'facet_block:status'
+settings:
+  id: 'facet_block:status'
+  label: Status
+  label_display: '0'
+  provider: facets
+  block_id: seven_facet_status
+visibility: {  }

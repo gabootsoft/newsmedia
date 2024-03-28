@@ -1,0 +1,6 @@
+_core:
+  default_config_hash: z6CviesfcFlL4OehpNfCT1r35SamVblJqgjx0xHMmro
+variants:
+  index:
+    label: 'Variant Index'
+    weight: 4

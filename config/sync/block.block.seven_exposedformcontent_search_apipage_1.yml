@@ -1,0 +1,31 @@
+uuid: 257db348-14e1-41e7-bb2c-60fa5233187d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.content_search_api
+  module:
+    - system
+    - views
+  theme:
+    - seven
+_core:
+  default_config_hash: JEdEshAr0qjpU5VGPXerPyRMqjQaMzYq9_1sIpDM6BE
+id: seven_exposedformcontent_search_apipage_1
+theme: seven
+region: content
+weight: -8
+provider: null
+plugin: 'views_exposed_filter_block:content_search_api-page_1'
+settings:
+  id: 'views_exposed_filter_block:content_search_api-page_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: /admin/content
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,25 @@
+uuid: 9ba69494-7026-4ced-b687-8dda43ae87d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.type
+  module:
+    - facets
+  theme:
+    - thunder_admin
+_core:
+  default_config_hash: XhfZ7ru98Ta7FaP9oLP4f-4wFCQOZp3mEoIxKMpr7BQ
+id: thunder_admin_facet_type
+theme: thunder_admin
+region: content
+weight: -4
+provider: null
+plugin: 'facet_block:type'
+settings:
+  id: 'facet_block:type'
+  label: Type
+  label_display: '0'
+  provider: facets
+  block_id: thunder_admin_facet_type
+visibility: {  }

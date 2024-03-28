@@ -1,0 +1,37 @@
+uuid: c24989b2-8aa0-43db-b5ab-ac9c404e2d55
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.inline
+    - field.field.media.twitter.field_author
+    - field.field.media.twitter.field_content
+    - field.field.media.twitter.field_url
+    - media.type.twitter
+  module:
+    - link
+_core:
+  default_config_hash: FcKjG_CNIzYP4Urm5iqZWDTlcMbRNhkpKX3xo2oiPus
+id: media.twitter.inline
+targetEntityType: media
+bundle: twitter
+mode: inline
+content:
+  field_url:
+    type: link_default
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_author: true
+  field_content: true
+  langcode: true
+  moderation_state: true
+  name: true
+  path: true
+  status: true
+  uid: true

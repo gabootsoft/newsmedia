@@ -1,0 +1,68 @@
+uuid: 85003c69-2e53-439e-a7e8-af44f022b894
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.pinterest.field_url
+    - media.type.pinterest
+  module:
+    - field_group
+    - link
+    - select2
+third_party_settings:
+  field_group:
+    group_basis:
+      children:
+        - field_url
+      label: Basis
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: content-form__form-section
+        id: ''
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: '-lFy5TMdbDS9rrQJ517IOygZ5zYjoQx8mFyqfCXLKPM'
+id: media.pinterest.default
+targetEntityType: media
+bundle: pinterest
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  uid:
+    type: select2_entity_reference
+    weight: 2
+    region: content
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  moderation_state: true
+  name: true
+  path: true

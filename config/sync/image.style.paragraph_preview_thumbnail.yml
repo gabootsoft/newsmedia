@@ -1,0 +1,19 @@
+uuid: 6dcde487-6473-4361-abe5-ae13bf5abd15
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: Fk_s0XtE34PPYnY7364zPtjMidurhM3MnTCt0a6P_4M
+name: paragraph_preview_thumbnail
+label: 'Paragraph Preview Thumbnail'
+effects:
+  be3418f6-9257-40ca-a6ed-20d73765b010:
+    uuid: be3418f6-9257-40ca-a6ed-20d73765b010
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 150
+      height: 90
+      crop_type: focal_point

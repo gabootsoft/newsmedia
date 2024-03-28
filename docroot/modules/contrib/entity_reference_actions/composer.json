@@ -1,0 +1,17 @@
+{
+    "name": "drupal/entity_reference_actions",
+    "description": "Provide an extension for entity reference fields to execute actions on the referenced items.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Christian Fritsch",
+            "email": "christian.fritsch@burda.com"
+        }
+    ],
+    "require-dev": {
+        "drupal/inline_entity_form": "^1.0-rc10",
+        "drupal/paragraphs": "^1.0",
+        "drupal/entity_reference_revisions": "^1.0"
+    }
+}

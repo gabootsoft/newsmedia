@@ -1,0 +1,22 @@
+uuid: 22e07bd0-3ba4-4939-923c-028352377857
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - olivero
+_core:
+  default_config_hash: Rm481j_59gRr2ujZpSryWH-le9nLO5HaiDF8XOiLQU4
+id: olivero_powered
+theme: olivero
+region: footer_bottom
+weight: 0
+provider: null
+plugin: thunder_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Thunder'
+  label_display: '0'
+  provider: system
+visibility: {  }

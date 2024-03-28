@@ -1,0 +1,13 @@
+name: 'Paragraphs Paste'
+type: module
+description: 'Creates paragraphs from pasted content.'
+package: Paragraphs
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - paragraphs:paragraphs (>= 8.x-1.13)
+  - drupal:ckeditor
+
+# Information added by Drupal.org packaging script on 2022-05-17
+version: '2.0.0-beta5'
+project: 'paragraphs_paste'
+datestamp: 1652790589

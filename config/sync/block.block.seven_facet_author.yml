@@ -1,0 +1,25 @@
+uuid: 84b9ba2f-9e7d-4a1f-926d-63a901616f8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.author
+  module:
+    - facets
+  theme:
+    - seven
+_core:
+  default_config_hash: js-a8OLnOyCEtpRU_uIhSlKNFdSoEejNPbFxlSTc3D4
+id: seven_facet_author
+theme: seven
+region: content
+weight: -5
+provider: null
+plugin: 'facet_block:author'
+settings:
+  id: 'facet_block:author'
+  label: Author
+  label_display: '0'
+  provider: facets
+  block_id: seven_facet_author
+visibility: {  }

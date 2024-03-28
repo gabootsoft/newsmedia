@@ -1,0 +1,14 @@
+uuid: 78efb14c-9c2c-4b55-8e41-873e2c7fb734
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.restricted_editor
+  module:
+    - user
+id: user_add_role_action.restricted_editor
+label: 'Add the Restricted editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: restricted_editor

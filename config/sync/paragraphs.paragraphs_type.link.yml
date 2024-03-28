@@ -1,0 +1,12 @@
+uuid: 1a05fb71-5989-42c9-b2bc-7a8620742462
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: g4XUs9xG7ZjHXxtm3Y0gX97cR1Ds8beUIWcXW5GC5yw
+id: link
+label: Link
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

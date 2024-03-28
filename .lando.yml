@@ -1,0 +1,36 @@
+name: newsmedia
+recipe: drupal9
+excludes:
+  - vendor
+  - node_modules
+  - docroot/modules/contrib
+#config:
+#  webroot: web
+services:
+  phpmyadmin:
+    type: phpmyadmin
+    hosts:
+      - database
+  appserver:
+    webroot: docroot
+    xdebug: false
+    config:
+      php: .vscode/php.ini
+    overrides:
+      environment:
+        XDEBUG_MODE:
+tooling:
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for Apache.
+    cmd: rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && docker-php-ext-enable xdebug && /etc/init.d/apache2 reload && echo "Xdebug enabled"
+    user: root
+
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for Apache.
+    cmd: rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload && echo "Xdebug disabled"
+    user: root
+proxy:
+  phpmyadmin:
+    - phpmyadmin.newsmedia.lndo.site

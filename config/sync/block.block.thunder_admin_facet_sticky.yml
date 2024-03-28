@@ -1,0 +1,25 @@
+uuid: 7ab8aeb8-70ad-4b45-8ecf-6d84817c49c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.sticky_at_top_of_lists
+  module:
+    - facets
+  theme:
+    - thunder_admin
+_core:
+  default_config_hash: UHDla9tWDR7k_cq3gQnFgisygNfTuSSgalVDZsz0cd8
+id: thunder_admin_facet_sticky
+theme: thunder_admin
+region: content
+weight: -1
+provider: null
+plugin: 'facet_block:sticky_at_top_of_lists'
+settings:
+  id: 'facet_block:sticky_at_top_of_lists'
+  label: Sticky
+  label_display: '0'
+  provider: facets
+  block_id: thunder_admin_facet_sticky
+visibility: {  }

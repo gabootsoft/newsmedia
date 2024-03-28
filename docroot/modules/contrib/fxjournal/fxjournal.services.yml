@@ -1,0 +1,4 @@
+services:
+  fxjournal.processor:
+    class: Drupal\fxjournal\Processor
+    arguments: ['@user.data', '@entity_type.manager']

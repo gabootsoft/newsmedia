@@ -1,0 +1,22 @@
+uuid: 0255cb76-77fd-4e86-b837-6e7e753e7512
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - media
+_core:
+  default_config_hash: cSALAeEHJz59cseb7ACv7jodsgkle6qJPoaVqNIbBls
+id: media.field_expires
+field_name: field_expires
+entity_type: media
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

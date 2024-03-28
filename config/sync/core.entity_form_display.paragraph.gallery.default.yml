@@ -1,0 +1,34 @@
+uuid: d9617106-f35d-4f7f-89d3-ef88fa4d78de
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.inline
+    - field.field.paragraph.gallery.field_media
+    - paragraphs.paragraphs_type.gallery
+  module:
+    - inline_entity_form
+_core:
+  default_config_hash: 8QVJn3y73k3hyqGElpmisZsK597cdizEZZ0lFaYk8eI
+id: paragraph.gallery.default
+targetEntityType: paragraph
+bundle: gallery
+mode: default
+content:
+  field_media:
+    type: inline_entity_form_simple
+    weight: 0
+    region: content
+    settings:
+      form_mode: inline
+      override_labels: true
+      label_singular: Gallery
+      label_plural: Galleries
+      collapsible: false
+      collapsed: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

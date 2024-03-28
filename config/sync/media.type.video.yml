@@ -1,0 +1,32 @@
+uuid: 08e7b8ce-80ea-4e2b-a0e8-0cb9b83e310a
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - media_expire
+third_party_settings:
+  crop:
+    image_field: null
+  media_expire:
+    expire_field: null
+    enable_expiring: null
+    fallback_media: null
+_core:
+  default_config_hash: ZAAK3pbY1YOYIIaWBGGcRYmO32t3d96JN9cXp1Ok6Fw
+id: video
+label: Video
+description: ''
+source: 'oembed:video'
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_embed_field
+  thumbnails_directory: 'public://oembed_thumbnails'
+  providers:
+    - YouTube
+    - Vimeo
+    - TikTok
+field_map:
+  title: name
+  author_name: field_author
